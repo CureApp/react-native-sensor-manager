@@ -13,19 +13,19 @@ import java.util.List;
 
 public class SensorManagerPackage implements ReactPackage {
 
-    @Override
+    // @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
         modules.add(new SensorManagerModule(reactContext));
         return modules;
     }
 
-    @Override
+    // @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
 
-	@Override
+	// @Override
 	public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
 		return Arrays.<ViewManager>asList();
 	}
