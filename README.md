@@ -1,12 +1,12 @@
-react-native-sensor-manager
-============================
+This is a forked repository of [react-native-sensor-manager](https://github.com/kprimice/react-native-sensor-manager.git) that seems to not to be actively maintained
+
+# react-native-sensor-manager
 
 Wrapper for react-native. Accelerometer, Gyroscope, Magnetometer, Orientation, Step Counter, Thermometer, LightSensor, and Proximity Sensor are supported for now.
 
-Add it to your project
--------------------------
+## Add it to your project
 
-`$ npm i react-native-sensor-manager --save`
+`$ yarn add @cureapp/react-native-sensor-manager`
 
 ### Option: With [`rnpm`](https://github.com/rnpm/rnpm)
 
@@ -16,27 +16,27 @@ Add it to your project
 
 Make alterations to the following files:
 
-* `android/settings.gradle`
+- `android/settings.gradle`
 
 ```gradle
 ...
-include ':react-native-sensor-manager'
-project(':react-native-sensor-manager').projectDir = new File(settingsDir, '../node_modules/react-native-sensor-manager/android')
+include ':@cureapp/react-native-sensor-manager'
+project(':@cureapp/react-native-sensor-manager').projectDir = new File(settingsDir, '../node_modules/@cureapp/react-native-sensor-manager/android')
 ```
 
-* `android/app/build.gradle`
+- `android/app/build.gradle`
 
 ```gradle
 ...
 dependencies {
     ...
-    compile project(':react-native-sensor-manager')
+    compile project(':@cureapp/react-native-sensor-manager')
 }
 ```
 
-* register module (in MainApplication.java)
+- register module (in MainApplication.java)
 
-  * For react-native below 0.19.0 (use `cat ./node_modules/react-native/package.json | grep version`)
+  - For react-native below 0.19.0 (use `cat ./node_modules/react-native/package.json | grep version`)
 
 ```java
 import com.sensormanager.SensorManagerPackage; // <------ add package
@@ -70,7 +70,8 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 }
 ```
 
-  * For react-native 0.19.0 and higher
+- For react-native 0.19.0 and higher
+
 ```java
 import com.sensormanager.SensorManagerPackage; // <------ add package
 
@@ -85,114 +86,120 @@ public class MainApplication extends Application implements ReactApplication {
     }
 ```
 
-Api
-----
+## Api
 
 ### Setup
+
 ```js
 import React, {
   DeviceEventEmitter // will emit events that you can listen to
-} from 'react-native';
+} from "react-native";
 
-import { SensorManager } from 'NativeModules';
+import { SensorManager } from "@cureapp/react-native-sensor-manager";
 ```
 
-
 ### Accelerometer
+
 ```js
 SensorManager.startAccelerometer(100); // To start the accelerometer with a minimum delay of 100ms between events.
-DeviceEventEmitter.addListener('Accelerometer', function (data) {
+DeviceEventEmitter.addListener("Accelerometer", function(data) {
   /**
-  * data.x
-  * data.y
-  * data.z
-  **/
+   * data.x
+   * data.y
+   * data.z
+   **/
 });
 SensorManager.stopAccelerometer();
 ```
 
 ### Gyroscope
+
 ```js
-DeviceEventEmitter.addListener('Gyroscope', function (data) {
+DeviceEventEmitter.addListener("Gyroscope", function(data) {
   /**
-  * data.x
-  * data.y
-  * data.z
-  **/
+   * data.x
+   * data.y
+   * data.z
+   **/
 });
 SensorManager.startGyroscope(100);
 SensorManager.stopGyroscope();
 ```
 
 ### Magnetometer
+
 ```js
 SensorManager.startMagnetometer(100);
-DeviceEventEmitter.addListener('Magnetometer', function (data) {
+DeviceEventEmitter.addListener("Magnetometer", function(data) {
   /**
-  * data.x
-  * data.y
-  * data.z
-  **/
+   * data.x
+   * data.y
+   * data.z
+   **/
 });
 SensorManager.stopMagnetometer();
 ```
 
 ### Orientation
+
 ```js
 SensorManager.startOrientation(100);
-DeviceEventEmitter.addListener('Orientation', function (data) {
+DeviceEventEmitter.addListener("Orientation", function(data) {
   /**
-  * data.azimuth
-  * data.pitch
-  * data.roll
-  **/
+   * data.azimuth
+   * data.pitch
+   * data.roll
+   **/
 });
 SensorManager.stopOrientation();
 ```
 
 ### Step Counter
+
 ```js
 SensorManager.startStepCounter(1000);
-DeviceEventEmitter.addListener('StepCounter', function (data) {
+DeviceEventEmitter.addListener("StepCounter", function(data) {
   /**
-  * data.steps
-  **/
+   * data.steps
+   **/
 });
 SensorManager.stopStepCounter();
 ```
 
 ### Thermometer
+
 ```js
 SensorManager.startThermometer(1000);
-DeviceEventEmitter.addListener('Thermometer', function (data) {
+DeviceEventEmitter.addListener("Thermometer", function(data) {
   /**
-  * data.temp
-  **/
+   * data.temp
+   **/
 });
 SensorManager.stopThermometer();
 ```
 
 ### LightSensor
+
 ```js
 SensorManager.startLightSensor(100);
-DeviceEventEmitter.addListener('LightSensor', function (data) {
+DeviceEventEmitter.addListener("LightSensor", function(data) {
   /**
-  * data.light
-  **/
+   * data.light
+   **/
 });
 SensorManager.stopLightSensor();
 ```
 
-
 ### Proximity Sensor
+
 ```js
 SensorManager.startProximity(100);
-DeviceEventEmitter.addListener('Proximity', function (data) {
+DeviceEventEmitter.addListener("Proximity", function(data) {
   /**
-  * data.isNear: [Boolean] A flag representing whether something is near the screen.
-  * data.value: [Number] The raw value returned by the sensor (usually distance in cm).
-  * data.maxRange: [Number] The maximum range of the sensor.
-  **/
+   * data.isNear: [Boolean] A flag representing whether something is near the screen.
+   * data.value: [Number] The raw value returned by the sensor (usually distance in cm).
+   * data.maxRange: [Number] The maximum range of the sensor.
+   **/
 });
 SensorManager.stopProximity();
 ```
