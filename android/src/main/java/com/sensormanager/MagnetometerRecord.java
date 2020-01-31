@@ -6,7 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import java.io.*;
 import java.util.Date;
