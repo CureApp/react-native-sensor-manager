@@ -11,6 +11,12 @@
     "type": "git",
     "url": "git+https://github.com/CureApp/react-native-sensor-manager.git"
   },
+  "files": [
+    "android",
+    "index.d.ts",
+    "index.js",
+    "react-native-sensor-manager.podspec"
+  ],
   "keywords": [
     "react-native",
     "android",
